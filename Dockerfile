@@ -3,6 +3,8 @@ MAINTAINER narumi
 WORKDIR /
 RUN pip install betago &&\
     git clone https://github.com/maxpumperla/betago.git &&\
-    echo 'python /betago/run_demo.py' > run.sh &&\
+    cd betago &&\
+    echo 'python run_demo.py' > run.sh &&\
     chmod +x run.sh
-CMD /run.sh
+WORKDIR /betago
+CMD ./run.sh
